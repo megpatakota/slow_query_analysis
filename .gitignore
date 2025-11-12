@@ -5,5 +5,26 @@
 # ignore all .csv files
 *.csv
 
-# ignore add docx files
+# ignore docx files
 *.docx
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/

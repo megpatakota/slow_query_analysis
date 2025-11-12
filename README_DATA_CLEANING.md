@@ -50,10 +50,21 @@ poetry shell
 ### Basic Usage
 
 ```python
-from data_cleaning import load_and_clean_data
-from analysis_utils import summarize_query_perf
-from visualization import plot_percentile_breakdown
-from viz_config import BASE_ACCENT, ALT_ACCENT, ALT_ACCENT_2
+# Recommended: Import from src package
+from src import (
+    load_and_clean_data,
+    summarize_query_perf,
+    plot_percentile_breakdown,
+    BASE_ACCENT,
+    ALT_ACCENT,
+    ALT_ACCENT_2
+)
+
+# Or import specific modules
+from src.data_cleaning import load_and_clean_data
+from src.analysis_utils import summarize_query_perf
+from src.visualization import plot_percentile_breakdown
+from src.viz_config import BASE_ACCENT, ALT_ACCENT, ALT_ACCENT_2
 
 # Load and clean data
 query_df = load_and_clean_data(verbose=True)
@@ -73,15 +84,28 @@ ax.bar(x, y, color=ALT_ACCENT)
 ### In Jupyter Notebooks
 
 ```python
-# Import modules
-from data_cleaning import load_and_clean_data
-from analysis_utils import summarize_query_perf
-from visualization import (
+# Import from src package (recommended)
+from src import (
+    load_and_clean_data,
+    summarize_query_perf,
+    plot_percentile_breakdown,
+    visualize_time_breakdown_by_category,
+    visualise_execution_and_queueing_time,
+    BASE_ACCENT,
+    ALT_ACCENT,
+    ALT_ACCENT_2,
+    BASE_PALETTE
+)
+
+# Or import specific modules
+from src.data_cleaning import load_and_clean_data
+from src.analysis_utils import summarize_query_perf
+from src.visualization import (
     plot_percentile_breakdown,
     visualize_time_breakdown_by_category,
     visualise_execution_and_queueing_time
 )
-from viz_config import BASE_ACCENT, ALT_ACCENT, ALT_ACCENT_2, BASE_PALETTE
+from src.viz_config import BASE_ACCENT, ALT_ACCENT, ALT_ACCENT_2, BASE_PALETTE
 
 # Load data
 query_df = load_and_clean_data(verbose=True)
@@ -135,7 +159,8 @@ query_df = load_and_clean_data(
 
 **Example:**
 ```python
-from analysis_utils import summarize_query_perf
+from src import summarize_query_perf
+# Or: from src.analysis_utils import summarize_query_perf
 
 # Basic usage
 summary = summarize_query_perf(query_df, 'WAREHOUSE_NAME')
@@ -189,11 +214,12 @@ summary = summarize_query_perf(
 
 **Example:**
 ```python
-from visualization import (
+from src import (
     plot_percentile_breakdown,
     visualize_time_breakdown_by_category,
     visualise_execution_and_queueing_time
 )
+# Or: from src.visualization import ...
 
 # Percentile analysis
 plot_percentile_breakdown(query_df, 'TOTAL_TIME_MIN')
@@ -236,11 +262,11 @@ visualise_execution_and_queueing_time(query_df, 'WAREHOUSE_NAME')
 # Activate Poetry environment
 poetry shell
 
-# Run data cleaning script
-python data_cleaning.py
+# Run data cleaning script as a module
+poetry run python -m src.data_cleaning
 
 # Or use poetry run
-poetry run python data_cleaning.py
+poetry run python -m src.data_cleaning
 ```
 
 ### In Jupyter Notebooks
@@ -255,9 +281,17 @@ jupyter notebook
 
 Then import the modules in your notebook:
 ```python
-from data_cleaning import load_and_clean_data
-from analysis_utils import summarize_query_perf
-from visualization import plot_percentile_breakdown
+# Recommended: Import from src package
+from src import (
+    load_and_clean_data,
+    summarize_query_perf,
+    plot_percentile_breakdown
+)
+
+# Or import specific modules
+from src.data_cleaning import load_and_clean_data
+from src.analysis_utils import summarize_query_perf
+from src.visualization import plot_percentile_breakdown
 ```
 
 ## Data Requirements

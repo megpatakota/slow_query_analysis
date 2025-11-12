@@ -20,8 +20,8 @@ except ImportError:
     def display(x):
         print(x)
 
-from viz_config import BASE_ACCENT, ALT_ACCENT, ALT_ACCENT_2, BASE_PALETTE
-from analysis_utils import summarize_query_perf
+from src.viz_config import BASE_ACCENT, ALT_ACCENT, ALT_ACCENT_2, BASE_PALETTE
+from src.analysis_utils import summarize_query_perf
 
 
 def plot_percentile_breakdown(query_df: pd.DataFrame, time_col: str = 'TOTAL_TIME_MIN') -> None:

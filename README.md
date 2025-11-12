@@ -92,16 +92,18 @@ slow_query_analysis/
 ├── docs/                          # Documentation
 │   ├── README_DATA_CLEANING.md
 │   └── Case study for Analytics Experience.docx
+├── src/                           # Source code directory
+│   ├── __init__.py               # Package initialization
+│   ├── analysis_utils.py         # Analysis utility functions
+│   ├── data_cleaning.py          # Data loading and preprocessing
+│   ├── visualization.py          # Visualization functions
+│   └── viz_config.py             # Visualization configuration
 ├── __pycache__/                   # Python cache (gitignored)
-├── analysis_utils.py             # Analysis utility functions
-├── data_cleaning.py              # Data loading and preprocessing
 ├── main.ipynb                    # Main analysis notebook
-├── visualization.py              # Visualization functions
-├── viz_config.py                # Visualization configuration
-├── pyproject.toml               # Poetry configuration
-├── poetry.lock                  # Locked dependencies
-├── README.md                    # This file
-└── README_DATA_CLEANING.md      # Data cleaning documentation
+├── pyproject.toml                # Poetry configuration
+├── poetry.lock                   # Locked dependencies
+├── README.md                     # This file
+└── README_DATA_CLEANING.md       # Data cleaning documentation
 ```
 
 ## Usage
@@ -124,21 +126,23 @@ Then open `main.ipynb` in your browser.
 ### Using as Python Modules
 
 ```python
-# Import data cleaning
-from data_cleaning import load_and_clean_data
-
-# Import analysis utilities
-from analysis_utils import summarize_query_perf
-
-# Import visualization functions
-from visualization import (
+# Import from the src package (recommended)
+from src import (
+    load_and_clean_data,
+    summarize_query_perf,
     plot_percentile_breakdown,
     visualize_time_breakdown_by_category,
-    visualise_execution_and_queueing_time
+    visualise_execution_and_queueing_time,
+    BASE_ACCENT,
+    ALT_ACCENT,
+    ALT_ACCENT_2
 )
 
-# Import visualization config
-from viz_config import BASE_ACCENT, ALT_ACCENT, ALT_ACCENT_2
+# Or import specific modules
+from src.data_cleaning import load_and_clean_data
+from src.analysis_utils import summarize_query_perf
+from src.visualization import plot_percentile_breakdown
+from src.viz_config import BASE_ACCENT, ALT_ACCENT, ALT_ACCENT_2
 
 # Load and clean data
 query_df = load_and_clean_data(verbose=True)
@@ -154,7 +158,7 @@ plot_percentile_breakdown(query_df, 'TOTAL_TIME_MIN')
 
 ```bash
 # Run data cleaning script
-poetry run python data_cleaning.py
+poetry run python -m src.data_cleaning
 ```
 
 ## Module Documentation
