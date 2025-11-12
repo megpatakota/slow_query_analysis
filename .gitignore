@@ -3,3 +3,6 @@ data/
 
 # ignore all .csv files
 *.csv
+
+# ignore add docx files
+*.docx
