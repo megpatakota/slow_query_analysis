@@ -1,5 +1,6 @@
 # ignore data folder
 /data/
+/docs/
 
 # ignore all .csv files
 *.csv
